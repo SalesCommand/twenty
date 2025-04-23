@@ -72,6 +72,7 @@ export class AccessTokenService {
         await this.twentyORMGlobalManager.getRepositoryForWorkspace<WorkspaceMemberWorkspaceEntity>(
           workspaceId,
           'workspaceMember',
+          false,
         );
 
       const workspaceMember = await workspaceMemberRepository.findOne({
@@ -128,7 +129,7 @@ export class AccessTokenService {
 
     if (!token) {
       throw new AuthException(
-        'missing authentication token',
+        'Missing authentication token',
         AuthExceptionCode.FORBIDDEN_EXCEPTION,
       );
     }
